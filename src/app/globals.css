@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/* Design tokens: warm paper, ink text, teal brand, gold for XP.
+   Game feel comes from tactile shapes (solid "lip" under buttons and
+   cards), not from gradients or glass effects. */
+@theme {
+  --font-sans: var(--font-rubik), system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  --color-paper: #fbf8f1;
+  --color-ink: #1e2433;
+  --color-line: #e6dfd1;
+
+  --color-brand-50: #eaf6f5;
+  --color-brand-100: #ccebe8;
+  --color-brand-200: #9dd8d3;
+  --color-brand-300: #64bfb8;
+  --color-brand-400: #34a29c;
+  --color-brand-500: #178683;
+  --color-brand-600: #0e6f6e;
+  --color-brand-700: #0c5857;
+  --color-brand-800: #0b4645;
+  --color-brand-900: #0a3a3a;
+
+  --color-gold-100: #fdf0d2;
+  --color-gold-300: #f7cf72;
+  --color-gold-400: #f5b83d;
+  --color-gold-600: #c98a12;
+  --color-gold-800: #7a5208;
+
+  --animate-pop: pop 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+  --animate-rise: rise 0.35s ease-out both;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes rise {
+  0% { transform: translateY(6px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+/* Buttons sit on a solid lip and press down when clicked. */
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 font-semibold transition-[transform,box-shadow,background-color] duration-100 select-none disabled:cursor-not-allowed disabled:opacity-60;
+  &:not(:disabled):active {
+    transform: translateY(2px);
+  }
+}
+
+@utility btn-primary {
+  @apply btn bg-brand-500 text-white shadow-[0_4px_0_var(--color-brand-700)] hover:bg-brand-400;
+  &:not(:disabled):active {
+    box-shadow: 0 2px 0 var(--color-brand-700);
+  }
+}
+
+@utility btn-secondary {
+  @apply btn border-2 border-line bg-white text-ink shadow-[0_3px_0_var(--color-line)] hover:border-brand-200 hover:bg-brand-50;
+  &:not(:disabled):active {
+    box-shadow: 0 1px 0 var(--color-line);
+  }
+}
+
+@utility btn-gold {
+  @apply btn bg-gold-400 text-ink shadow-[0_4px_0_var(--color-gold-600)] hover:bg-gold-300;
+  &:not(:disabled):active {
+    box-shadow: 0 2px 0 var(--color-gold-600);
+  }
+}
+
+/* Cards: white tiles with a thicker bottom edge. */
+@utility card {
+  @apply rounded-2xl border-2 border-line bg-white shadow-[0_4px_0_var(--color-line)];
+}
+
+@utility field {
+  @apply w-full rounded-xl border-2 border-line bg-white px-3 py-2 text-base text-ink outline-none placeholder:text-stone-400 focus:border-brand-400 focus:ring-4 focus:ring-brand-100 aria-invalid:border-red-400;
+}
+
+@utility chip {
+  @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

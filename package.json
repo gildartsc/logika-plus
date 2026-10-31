@@ -1,0 +1,44 @@
+{
+  "name": "learn-project",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "vitest run",
+    "import:content": "node --env-file=.env.local scripts/import-content.ts",
+    "test:rls": "node --env-file=.env.local scripts/test-rls.ts",
+    "ai:bypass": "node --env-file=.env.local scripts/ai-bypass.ts",
+    "ai:scenarios": "node --env-file=.env.local scripts/ai-scenarios.ts",
+    "demo:students": "node --env-file=.env.local scripts/demo-students.ts",
+    "ai:grader": "node --env-file=.env.local scripts/ai-grader-check.ts",
+    "screenshots": "node --env-file=.env.local scripts/screenshots.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.131.0",
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.117.2",
+    "mammoth": "^1.13.0",
+    "next": "16.4.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "^4",
+    "@types/node": "^24.19.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.0",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "vitest": "^5.0.3"
+  },
+  "type": "module"
+}

@@ -1,0 +1,10 @@
+# Never upload secrets or private data to Vercel (the CLI uploads the folder,
+# not only what git tracks).
+.env*
+!.env.example
+content/private/
+*.xlsx
+.~lock.*#
+claude_resume.txt
+screenshots/
+coverage/

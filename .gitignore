@@ -1,0 +1,42 @@
+# Secrets: never commit real env files
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Next.js / build output
+.next/
+out/
+build/
+next-env.d.ts
+*.tsbuildinfo
+
+# Tests
+coverage/
+
+# Deploy / tooling
+.vercel/
+supabase/.temp/
+supabase/.branches/
+
+# Logs and OS files
+*.log
+npm-debug.log*
+.DS_Store
+
+# Misc
+*.pem
+.pnp
+.pnp.*
+
+# Source spreadsheets with reference answers stay out of git
+*.xlsx
+.~lock.*#
+
+# Demo answers and run reports (contain reference answers)
+content/private/
+
+# Local screenshots from npm run screenshots
+screenshots/
